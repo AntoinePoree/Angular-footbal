@@ -1,0 +1,36 @@
+<table *ngIf="league$ | async as league; else noTemplate">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Name</th>
+      <th>Games</th>
+      <th>W</th>
+      <th>L</th>
+      <th>D</th>
+      <th>Goal Difference</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let standing of league.standings[0]; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>
+        <img [src]="standing.team.logo" width="18" height="18" priority />
+      </td>
+      <td>
+        <a [routerLink]="['../../team/', standing.team.id]">{{
+          standing.team.name
+        }}</a>
+      </td>
+      <td>{{ standing.all.played }}</td>
+      <td>{{ standing.all.win }}</td>
+      <td>{{ standing.all.lose }}</td>
+      <td>{{ standing.all.draw }}</td>
+      <td>{{ standing.goalsDiff }}</td>
+      <td>{{ standing.points }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noTemplate>Aucune donnée</ng-template>

@@ -1,0 +1,21 @@
+<table *ngIf="historyes$ | async as historyes; else noTemplate">
+  <tbody>
+    <tr *ngFor="let history of historyes; let i = index">
+      <td>
+        <img [src]="history.teams.home.logo" width="18" height="18" priority />
+      </td>
+      <td>{{ history.teams.home.name }}</td>
+      <td>{{ history.goals.home ? history.goals.home : '0' }}</td>
+      <td>-</td>
+      <td>{{ history.goals.away ? history.goals.away : '0' }}</td>
+      <td>{{ history.teams.away.name }}</td>
+      <td>
+        <img [src]="history.teams.away.logo" width="18" height="18" priority />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noTemplate>Aucune donnée</ng-template>
+
+<button (click)="backToTable()">Back to Table</button>

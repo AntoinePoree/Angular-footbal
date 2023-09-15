@@ -1,0 +1,14 @@
+<header>
+  <button
+    *ngFor="let team of topLeague"
+    [attr.id]="team.country + 'Select'"
+    [routerLink]="['league/', team.idLeague]"
+  >
+    {{ team.country }}
+  </button>
+  <button *ngIf="displayReset()" #resetSelect [routerLink]="['']">Reset</button>
+</header>
+
+<section>
+  <router-outlet></router-outlet>
+</section>
